@@ -7,7 +7,7 @@ function Progress({ rooms }) {
   return (
     <>
       <Typography sx={{ mb: 1 }}>
-        Pakket {packed} av {rooms.length} rom
+        Pakket {packed} av {rooms.length} rom ({Math.round(percent)}%)
       </Typography>
       <LinearProgress
         variant="determinate"

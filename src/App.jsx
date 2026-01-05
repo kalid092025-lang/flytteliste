@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect} from "react";
 import { Container, Grid } from "@mui/material";
 import { rooms as roomData } from "./data/rooms";
 import Header from "./components/Header";
@@ -7,9 +7,17 @@ import RoomCard from "./components/Roomcard";
 import Progress from "./components/Progress";
 
 function App() {
-  const [rooms, setRooms] = useState(
-    roomData.map(room => ({ ...room, packed: false }))
-  );
+  const [rooms, setRooms] = useState(() => {
+  const saved = localStorage.getItem("rooms");
+  if (saved) {
+    return JSON.parse(saved);
+  }
+  return roomData.map(room => ({ ...room, packed: false }));
+});
+useEffect(() => {
+  localStorage.setItem("rooms", JSON.stringify(rooms));
+}, [rooms]);
+
   const [filter, setFilter] = useState("all");
 
   const togglePacked = (id) => {
