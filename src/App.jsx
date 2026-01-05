@@ -27,7 +27,7 @@ function App() {
   });
 
   return (
-    <Container sx={{ mt: 4 , padding: 2, bgcolor: "grey.100", borderRadius: 2 ,border: room.packed ? "2px solid green" : "2px solid gray"  }}>
+    <Container sx={{ mt: 4 , padding: 2, bgcolor: "grey.100", borderRadius: 2 }}>
       <Header />
       <Progress rooms={rooms} />
       <Filter setFilter={setFilter} />
